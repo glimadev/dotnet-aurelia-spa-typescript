@@ -1,0 +1,29 @@
+﻿<template>
+  <div tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Errors</h4>
+          <button type="button"
+                  click.trigger="controller.cancel()"
+                  class="close"
+                  aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <span repeat.for="message of response.messages">
+            ${message} <br/>
+          </span>
+        </div>
+        <div class="modal-footer">
+          <button type="button"
+                  class="btn btn-danger"
+                  click.trigger="controller.cancel()">
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

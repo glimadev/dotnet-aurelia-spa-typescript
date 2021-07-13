@@ -1,0 +1,103 @@
+﻿<template>
+    <form submit.trigger="execute()">
+
+        <div class="form-group"
+             validation-errors.bind="assetNameErrors"
+             class.bind="assetNameErrors.length ? 'has-error' : ''">
+            <label for="assetName">Asset Name</label>
+            <input type="text"
+                   class="form-control"
+                   class.bind="assetNameErrors.length ? 'is-invalid' : ''"
+                   id="assetName"
+                   name="assetName"
+                   placeholder="Enter Asset Name"
+                   value.bind="asset.assetName & validate" />
+        </div>
+
+        <div class="form-group"
+             validation-errors.bind="departmentErrors"
+             class.bind="departmentErrors.length ? 'has-error' : ''">
+            <label for="department">Department</label>
+            <select value.bind="asset.department & validate"
+                    class="form-control"
+                    id="department"
+                    name="department"
+                    class.bind="departmentErrors.length ? 'is-invalid' : ''">
+                <option model.bind="null">Select...</option>
+                <option repeat.for="department of listDepartments"
+                        model.bind="department.id">
+                    ${department.id} - ${department.name}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group"
+             validation-errors.bind="countryOfDepartmentErrors"
+             class.bind="countryOfDepartmentErrors.length ? 'has-error' : ''">
+            <label for="countryOfDepartment">Country Of Department</label>
+            <select value.bind="asset.countryOfDepartment & validate"
+                    class="form-control"
+                    id="countryOfDepartment"
+                    name="countryOfDepartment"
+                    class.bind="countryOfDepartmentErrors.length ? 'is-invalid' : ''">
+                <option model.bind="null">Select...</option>
+                <option repeat.for="country of listCountries"
+                        model.bind="country.name">
+                    ${country.name}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group"
+             validation-errors.bind="eMailAdressOfDepartmentErrors"
+             class.bind="eMailAdressOfDepartmentErrors.length ? 'has-error' : ''">
+            <label for="eMailAdressOfDepartment">E-mail Address of Department</label>
+            <input type="email"
+                   class="form-control"
+                   class.bind="eMailAdressOfDepartmentErrors.length ? 'is-invalid' : ''"
+                   id="eMailAdressOfDepartment"
+                   name="eMailAdressOfDepartment"
+                   placeholder="Enter E-mail Address of Department"
+                   value.bind="asset.eMailAdressOfDepartment & validate" />
+        </div>
+
+        <div class="form-group"
+             validation-errors.bind="purchaseDateErrors"
+             class.bind="purchaseDateErrors.length ? 'has-error' : ''">
+            <label for="purchaseDate">Purchase Date</label>
+            <input type="date"
+                   class="form-control"
+                   class.bind="purchaseDateErrors.length ? 'is-invalid' : ''"
+                   id="purchaseDate"
+                   name="purchaseDate"
+                   placeholder="Enter Purchase Date"
+                   value.bind="asset.purchaseDate & validate" />
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" value.bind="asset.broken" value="1" id="broken">
+            <label class="form-check-label" for="broken">
+                Broken
+            </label>
+        </div>
+
+        <br />
+
+        <div class="form-footer">
+            <button type="submit"
+                    class="btn btn-success"
+                    disabled.bind="!canSave"
+                    style="cursor: pointer">
+                Send
+            </button>
+
+            <button type="button"
+                    class="btn btn-danger"
+                    click.delegate="resetDialog()"
+                    disabled.bind="!canReset"
+                    style="cursor: pointer">
+                Reset
+            </button>
+        </div>
+    </form>
+</template>
