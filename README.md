@@ -27,6 +27,7 @@ Projects:
 * `AureliaWithDotNet.Data` - .Net 5.0 Class Library handles every DataAccess also HTTPDataAccess for country validation, uses RepositoryPattern and UnitOfWork Pattern
 * `AureliaWithDotNet.Data.xUnit` – .Net 5.0 xUnit project containing unit tests related to `AureliaWithDotNet.Data`
 * `AureliaWithDotNet.IntegrationTest` – .Net 5.0 NUnit project containing integration tests related to `AureliaWithDotNet.Web` controllers
+
 The solution contains the needed docker files to run the application out of the box in docker environment.
 
 Web solution have rest endpoints and a user interface/form to apply data.
